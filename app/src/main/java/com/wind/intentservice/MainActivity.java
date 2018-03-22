@@ -3,9 +3,11 @@ package com.wind.intentservice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView percent;
     private LocalBroadcastManager localBroadcastManager;
-
+    private MyBroadCastReceiver myBroadCastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.pb_progress);
         percent=findViewById(R.id.tv_percent);
         button=findViewById(R.id.bt_button);
+        //registerReceiver
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        myBroadCastReceiver=new MyBroadCastReceiver();
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction(ACTION_THREAD);
+        localBroadcastManager.registerReceiver(myBroadCastReceiver,intentFilter);
+        //initView
         textView.setText("线程状态：未运行");
         progressBar.setMax(100);
         progressBar.setProgress(0);
@@ -37,15 +45,16 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("SIMON","SIMON");
                 Intent intent = new Intent(MainActivity.this, MyIntentService.class);
+                intent.setAction("sss");
                 startService(intent);
             }
         });
     }
 
-
+    //define broadcastreceiver
     public class MyBroadCastReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {

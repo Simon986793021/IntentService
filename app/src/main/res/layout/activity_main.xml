@@ -23,6 +23,7 @@
         android:id="@+id/pb_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="36dp" />
     <TextView
