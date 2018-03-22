@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     public final static String ACTION_THREAD = "action.thread";
+    public final static String INTENT_TAG = "com.wind.intent";
     private TextView textView;
     private Button button;
     private ProgressBar progressBar;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("SIMON","SIMON");
                 Intent intent = new Intent(MainActivity.this, MyIntentService.class);
                 intent.setAction("sss");
+                intent.putExtra(INTENT_TAG,"firstintent");
+                startService(intent);
+                //Intent secondintent=new Intent(MainActivity.this, MyIntentService.class);
+                intent.putExtra(INTENT_TAG,"secondintent");
                 startService(intent);
             }
         });

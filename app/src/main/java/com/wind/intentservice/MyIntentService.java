@@ -50,6 +50,9 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Log.i("SIMON","onHandleIntent");
+        //test mutiTask
+        String firstTask=intent.getStringExtra(MainActivity.INTENT_TAG);
+        Log.i("SIMON",firstTask);
         try {
             Thread.sleep(1000);
             isRunning = true;
