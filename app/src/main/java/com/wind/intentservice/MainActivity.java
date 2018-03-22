@@ -48,12 +48,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("SIMON","SIMON");
                 Intent intent = new Intent(MainActivity.this, MyIntentService.class);
-                intent.setAction("sss");
                 intent.putExtra(INTENT_TAG,"firstintent");
                 startService(intent);
-                //Intent secondintent=new Intent(MainActivity.this, MyIntentService.class);
                 intent.putExtra(INTENT_TAG,"secondintent");
-                startService(intent);
+                startService(intent);//mutiTask test
             }
         });
     }

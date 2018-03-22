@@ -19,7 +19,7 @@ public class MyIntentService extends IntentService {
     private int count;
 
     /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
+     * Creates an IntentService.
      *
      */
     public MyIntentService() {
@@ -36,7 +36,6 @@ public class MyIntentService extends IntentService {
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
         Log.i("SIMON","onStartCommand");
-        Log.i("SIMON","intent"+intent.getAction());
         return super.onStartCommand(intent, flags, startId);
     }
 
